@@ -1,0 +1,31 @@
+<template>
+  <require from="./sudoku-board.css"></require>
+  <div class="options">
+    <label>Show Solution <input type="checkbox" checked.bind="showSolution"></label>
+    <label style="padding-left:3rem">Show Hints <input type="checkbox" checked.bind="showHints"></label>
+  </div>
+  <div class="left-panel">
+    <div>
+      <template if.bind="showHints">
+        <h5><i>Available Options</i></h5>
+        <ul>
+          <li repeat.for="option of availableOptions" click.delegate="chooseOption(option)">${option}</li>
+        </ul>
+      </template>
+    </div>
+  </div>
+  <section class="main-panel" keydown-trigger="onKeypress($event)">
+    <div class="sudoku-row ${isRowBoundary(row) ? 'row-border' : '' }" repeat.for="row of gameArray">
+      <template repeat.for="col of row">
+        <sudoku-box class="${ isColBoundary(col.offset) ? 'col-border' : ''}" sudoku-value.bind="col"
+          show-solution.bind="showSolution" focus.trigger="onFocus($event.detail.offset)"
+          blur.trigger="onBlur($event.detail.offset)" move.trigger="onMove($event.detail)"
+          is-current.bind="currentOffset===col.offset"
+          click.delegate="selectBox(col.offset)">
+        </sudoku-box>
+      </template>
+    </div>
+  </section>
+  </div>
+
+</template>

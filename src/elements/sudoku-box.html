@@ -1,0 +1,19 @@
+<template>
+  <require from="./sudoku-box.css"></require>
+  <section class="${ isCurrent ? 'current-box' : ''}">
+    <template if.bind="sudokuValue.originalValue">
+      <div class="original" textcontent.bind="sudokuValue.solvedValue"></div>
+    </template>
+    <template else>
+      <template if.bind="showSolution">
+        <div textcontent.bind="sudokuValue.solvedValue" contenteditable="false"></div>
+      </template>
+      <template else>
+        <div class="${isIncorrect ? 'error' : '' }" focus.trigger="onFocus()" blur.trigger="onBlur() & debounce:500"
+          textcontent.bind="sudokuValue.value | sudoku:9" contenteditable="true">
+        </div>
+      </template>
+    </template>
+
+  </section>
+</template>

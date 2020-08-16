@@ -1,0 +1,28 @@
+<template>
+  <h1>Hello, this is the dev app for plugin au-sudoku</h1>
+  <p>This dev app is bundled to scripts/ folder (ignored in .gitignore). If you commit the bundle files to github, this app can serve as a <a href="https://pages.github.com" target="_blank">github page</a>!</p>
+
+  <p>Please read the <a href="README.md">README</a> file in your project for more information.</p>
+
+  <hr>
+  <h2>Custom Element "sudoku-board"</h2>
+  <p>Usage: <code>&lt;sudoku-board game-array-in.bind="gameArray"&gt;&lt;/sudoku-board&gt;</code></p>
+  <p>the gameArray consists of an array that defines the sudoku board.  It is a 2 dimensional array (9x9) of numbers that align to the positions in the Sudoku grid.</p>
+  <p><code>
+    <pre>
+  gameArray=[
+    [5,3,0,0,7,0,0,0,0], 
+    [6,0,0,1,9,5,0,0,0], 
+    [0,9,8,0,0,0,0,6,0], 
+    [8,0,0,0,6,0,0,0,3], 
+    [4,0,0,8,0,3,0,0,1], 
+    [7,0,0,0,2,0,0,0,6], 
+    [0,6,0,0,0,0,2,8,0], 
+    [0,0,0,4,1,9,0,0,5], 
+    [0,0,0,0,8,0,0,7,9]
+  ]</pre>
+  </code></p>
+  <div class="col">
+    <sudoku-board game-array-in.bind="gameArray"></sudoku-board>
+  </div>
+</template>
